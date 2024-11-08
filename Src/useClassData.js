@@ -29,7 +29,8 @@ const UseClassesData = () => {
     const filtered = classes.filter((item) => {
       const teacherMatch = item.teacher.toLowerCase().includes(lowercasedQuery);
       const dayMatch = item.dayOfWeek.toLowerCase().includes(lowercasedQuery);
-      return teacherMatch || dayMatch;
+      const typeMatch = item.typeOfCourse.toLowerCase().includes(lowercasedQuery);
+      return teacherMatch || dayMatch || typeMatch;
     });
     setFilteredClasses(filtered); // Update the list with filtered results
   };
@@ -67,6 +68,10 @@ const UseClassesData = () => {
             <View style={styles.classRow}>
               <Text style={styles.label}>Comment:</Text>
               <Text style={styles.value}>{item.comment}</Text>
+            </View>
+            <View style={styles.classRow}>
+              <Text style={styles.label}>typeOfCourse: </Text>
+              <Text style={styles.value}>{item.typeOfCourse}</Text>
             </View>
           </View>
         )}
